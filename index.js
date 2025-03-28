@@ -41,7 +41,9 @@ app.get("/url/:shortId", async (req, res) => {
       },
     }
   );
-  res.redirect(entry.redirectURL);
+  console.log("here")
+  const cleanURL = entry.redirectURL.trim().replace(/^(https?:\/\/)?(www\.)?/, "");
+  res.redirect(`https://${cleanURL}`);
 });
 
 app.listen(PORT, () => console.log(`Server Started at PORT:${PORT}`));
